@@ -11,10 +11,9 @@ class Zillow:
         links = []
         for link in links_scraped:
             href = link.get("href")
-            if 'http' in href:
-                links.append(href)
-            else:
+            if 'http' not in href:
                 links.append(f"https://www.zillow.com{href}")
+            links.append(href)
         return list(dict.fromkeys(links)) #to remove duplicates
 
     def find_prices(self):
